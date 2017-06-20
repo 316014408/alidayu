@@ -37,7 +37,7 @@ func DoPost(m map[string]string) (success bool, response string) {
 
 	data, _ := ioutil.ReadAll(resp.Body)
 	response = string(data)
-	if strings.Contains(response, `"success":true`) {
+	if strings.Contains(response, "success") {
 		return true, response
 	}
 	return false, response
