@@ -19,6 +19,7 @@ func QuerySMS(rec_num, query_date, current_page, page_size string) (success bool
 	params["sign_method"] = "md5"
 	params["timestamp"] = time.Now().Format("2006-01-02 15:04:05")
 	params["v"] = "2.0"
+	params["sms_type"] = "normal"
 	params["query_date"] = query_date     // 短信发送日期，支持近30天记录查询，格式yyyyMMdd
 	params["rec_num"] = rec_num           // 短信接收号码
 	params["current_page"] = current_page // 分页参数,页码
