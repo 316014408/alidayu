@@ -1,6 +1,7 @@
 package alidayu
 
 import (
+	"strings"
 	"time"
 )
 
@@ -23,7 +24,9 @@ func QuerySMS(rec_num, query_date, current_page, page_size string) (success bool
 	params["rec_num"] = rec_num           // 短信接收号码
 	params["current_page"] = current_page // 分页参数,页码
 	params["page_size"] = page_size       // 分页参数，每页数量。最大值50
-
-	return DoPost(params)
-
+	_, response = DoPost(params)
+	if strings.Contains(response, "error_response") {
+		return false, response
+	}
+	return true, response
 }
